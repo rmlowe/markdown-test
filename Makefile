@@ -3,11 +3,13 @@
 all: docx pdf
 
 docx:
-	pandoc README.md -s -o README.docx
+	mkdir -p target
+	pandoc README.md -s -o target/README.docx --reference-doc=custom-reference.docx
 
 pdf:
 	# PDF exported from Word looks better
-	pandoc README.md -s -o README.pdf
+	mkdir -p target
+	pandoc README.md -s -o target/README.pdf
 
 clean:
-	rm *.docx *.pdf
+	rm target/*.*
